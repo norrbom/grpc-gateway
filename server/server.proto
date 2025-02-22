@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package server;
+
+option go_package = "github.com/norrbom/grpc-gateway/server";
+
+service ProxyPing {
+  rpc SayPing (PingMessage) returns (PingMessageReply) {}
+}
+
+service BackendPing {
+  rpc SayPing (PingMessage) returns (PingMessageReply) {}
+}
+
+message PingMessage {
+  string id   = 1;
+  string body = 2;
+}
+
+message PingMessageReply {
+  bool ok = 1;
+}
